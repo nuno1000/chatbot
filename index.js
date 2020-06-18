@@ -32,7 +32,7 @@ const recognizerOptions = {
   apiVersion: 'v3'
 };
 
-const luisRecognizer = new LuisRecognizer(luisConfig, recognizerOptions);
+//const luisRecognizer = new LuisRecognizer(luisConfig, recognizerOptions);
 
 // This bot's main dialog.
 const { Bot } = require('./dialogbot');
@@ -290,7 +290,7 @@ app.post('/webhook', (req, res) => {
             "text": "teste5"
           }
 
-          console.log(luisConfig.applicationId.text);
+          //console.log(luisConfig.applicationId);
     
         callSendAPI(sender_psid, response);
       } 
