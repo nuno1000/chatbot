@@ -246,7 +246,7 @@ app.post('/webhook', (req, res) => {
         adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
         await bot.run(turnContext);
-        callSendAPI(sender_psid, turnContext.activity.text)
+        handleMessage(sender_psid, turnContext.activity.text);
     });       
       } 
       
