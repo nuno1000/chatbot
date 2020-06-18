@@ -1,8 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-'use strict';
-const VERIFY_TOKEN = process.env.VERIFICATION_TOKEN;
+//'use strict';
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const dotenv = require('dotenv');
 const path = require('path');
@@ -122,7 +121,11 @@ app.on('upgrade', (req, socket, head) => {
 });
 
 // Adds support for GET requests to our webhook
-app.get('/webhook', (req, res) => {     
+app.get('/webhook', (req, res) => {
+
+    // Your verify token. Should be a random string.
+    let VERIFY_TOKEN = process.env.VERIFICATION_TOKEN;
+      
     // Parse the query params
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
