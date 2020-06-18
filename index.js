@@ -247,12 +247,13 @@ app.post('/webhook', (req, res) => {
         // Route received a request to adapter for processing
         adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
-        await bot.run(turnContext);
-        }); 
+        await bot.run(turnContext);   
 
         response = {
-            "text": `You sent the message. Now send me an attachment!`
+            "text": turnContext.activity.text
           }
+        }); 
+
         callSendAPI(sender_psid, response);
       } 
       
