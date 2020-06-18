@@ -18,6 +18,11 @@ const path = require('path');
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+const { LuisRecognizer } = require('botbuilder-ai');
+const { FlightBookingRecognizer } = require('./flightBookingRecognizer');
+const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
+const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: `https://${ LuisAPIHostName }` };
+
 
 // Create conversation and user state with in-memory storage provider.
 const conversationState = new ConversationState(new MemoryStorage());
@@ -250,8 +255,30 @@ app.post('/webhook', (req, res) => {
         await bot.run(turnContext);   
         });
 
+        const luisRecognizer = new FlightBookingRecognizer(luisConfig);
+
+        const luisResult = await luisRecognizer.executeLuisQuery(stepContext.context);
+        switch (LuisRecognizer.topIntent(luisResult)) {
+          case 'BookFlight': {
+            response = {
+              "text": "teste1"
+            }        }
+
+          case 'GetWeather': {
+            response = {
+              "text": "teste2"
+            }
+          }
+
+          default: {
+            response = {
+              "text": "teste3"
+            }        
+          }
+        }
+    
         response = {
-            "text": "teste"
+            "text": "teste4"
           }
     
         callSendAPI(sender_psid, response);
