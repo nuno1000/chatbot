@@ -243,11 +243,12 @@ app.post('/webhook', (req, res) => {
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
         // Route received a request to adapter for processing
-        //adapter.processActivity(req, res, async (turnContext) => {
+        adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
-        //await bot.run(turnContext);
-        handleMessage(sender_psid, turnContext.activity.text);
-    });       
+        await bot.run(turnContext);
+        }); 
+
+        handleMessage(sender_psid, webhook_event);
       } 
       
     });
@@ -296,17 +297,13 @@ function handleMessage(sender_psid, received_message) {
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     
-    adapter.processActivity(req, res, async (context) => {
+    /*adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
         await bot.run(context);
-    });
+    });*/
 
     response = {
-
-    "text" : context.activity.text
-
-
-     // "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
+      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
     }
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
