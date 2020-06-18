@@ -122,11 +122,7 @@ app.on('upgrade', (req, socket, head) => {
 });
 
 // Adds support for GET requests to our webhook
-app.get('/webhook', (req, res) => {
-
-    // Your verify token. Should be a random string.
-    let VERIFY_TOKEN = "teste"
-      
+app.get('/webhook', (req, res) => {     
     // Parse the query params
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
