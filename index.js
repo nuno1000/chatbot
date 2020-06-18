@@ -252,8 +252,8 @@ app.post('/webhook', (req, res) => {
         // Route received a request to adapter for processing
         adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
-        await bot.run(turnContext);   
-        });
+        //await bot.run(turnContext);   
+        
 
         const luisRecognizer = new FlightBookingRecognizer(luisConfig);
 
@@ -276,6 +276,7 @@ app.post('/webhook', (req, res) => {
             }        
           }
         }
+      });
     
         response = {
             "text": "teste4"
