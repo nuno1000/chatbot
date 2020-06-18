@@ -101,7 +101,10 @@ app.post('/webhook', (req, res) => {
       res.sendStatus(404);
     };
 
-    
+    adapter.processActivity(req, res, async (context) => {
+        // Route to main dialog.
+        await bot.run(context);
+    });
   
   });
 
