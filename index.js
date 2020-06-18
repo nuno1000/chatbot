@@ -203,8 +203,29 @@ const
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
+// Listen for incoming requests.
+app.post('/webhook', (req, res) => {
+    adapter.processActivity(req, res, async (context) => {
+        // Route to main dialog.
+        await bot.run(context);
+    });
+
+    let body = req.body;
+
+    if (body.object === 'page') {
+        body.entry.forEach(function(entry) {
+            let webhook_event = entry.messaging[0];
+            let sender_psid = webhook_event.sender.id;
+
+            if (webhook_event.message) {
+                handleMessage(sender_psid, webhook_event.message);        
+            } 
+        });
+    }
+});
+
 // Accepts POST requests at /webhook endpoint
-app.post('/webhook', (req, res) => {  
+/*app.post('/webhook', (req, res) => {  
 
   // Parse the request body from the POST
   let body = req.body;
@@ -241,7 +262,7 @@ app.post('/webhook', (req, res) => {
     res.sendStatus(404);
   }
 
-});
+});*/
 
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', (req, res) => {
