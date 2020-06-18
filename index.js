@@ -308,6 +308,7 @@ function handleMessage(sender_psid, received_message) {
     adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
         await bot.run(context);
+    });
 
     response = {
 
