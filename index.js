@@ -256,7 +256,7 @@ app.post('/webhook', (req, res) => {
 
         const luisRecognizer = new FlightBookingRecognizer(luisConfig);
 
-        const luisResult = await luisRecognizer.executeLuisQuery(stepContext.context);
+        const luisResult = await luisRecognizer.executeLuisQuery(turnContext);
         switch (LuisRecognizer.topIntent(luisResult)) {
           case 'BookFlight': {
             response = {
