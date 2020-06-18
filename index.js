@@ -278,9 +278,9 @@ app.post('/webhook', (req, res) => {
         }
       });
     
-        response = {
+        /*response = {
             "text": "teste5"
-          }
+          }*/
     
         callSendAPI(sender_psid, response);
       } 
