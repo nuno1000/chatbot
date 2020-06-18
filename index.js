@@ -248,7 +248,7 @@ app.post('/webhook', (req, res) => {
         await bot.run(turnContext);
         }); 
 
-        handleMessage(sender_psid, webhook_event);
+        handleMessage(sender_psid, webhook_event.message);
       } 
       
     });
