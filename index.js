@@ -245,9 +245,10 @@ app.post('/webhook', (req, res) => {
         let response;
 
         // Route received a request to adapter for processing
-        //adapter.processActivity(req, res, async (turnContext) => {
+        adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
-        //await bot.run(turnContext);   
+        await bot.run(turnContext);   
+        });
 
         response = {
             "text": "teste"
