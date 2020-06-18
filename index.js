@@ -242,13 +242,18 @@ app.post('/webhook', (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
+        let response;
+
         // Route received a request to adapter for processing
         adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
         await bot.run(turnContext);
         }); 
 
-        handleMessage(sender_psid, webhook_event.message);
+        response = {
+            "text": `You sent the message. Now send me an attachment!`
+          }
+        callSendAPI(sender_psid, response);
       } 
       
     });
