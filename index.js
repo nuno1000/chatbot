@@ -284,7 +284,8 @@ app.get('/webhook', (req, res) => {
     
     } else {
       // Responds with '403 Forbidden' if verify tokens do not match
-      res.sendStatus(200);      
+      res.sendStatus(403);  
+      console.log('try again'); 
     }
   }
 });
