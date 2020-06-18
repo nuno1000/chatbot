@@ -218,7 +218,7 @@ app.post('/webhook', (req, res) => {
             let sender_psid = webhook_event.sender.id;
 
             if (webhook_event.message) {
-                callSendAPI(sender_psid, webhook_event.message.text);        
+                handleMessage(sender_psid, webhook_event.message);        
             } 
         });
 
