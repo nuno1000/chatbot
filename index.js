@@ -283,7 +283,7 @@ app.post('/webhook', (req, res) => {
     
         callSendAPI(sender_psid, response);
       } 
-      res.status(200).send('EVENT_RECEIVED');
+      //res.status(200).send('EVENT_RECEIVED');
     });
 
     //res.status(200).send(req.body.message.text);
