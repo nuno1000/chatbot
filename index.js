@@ -255,7 +255,7 @@ app.post('/webhook', (req, res) => {
         let response;
 
         // Route received a request to adapter for processing
-        adapter.processActivity(req, res, (async (turnContext) => {
+       /* adapter.processActivity(req, res, (async (turnContext) => {
         // route to bot activity handler.
         //await bot.run(turnContext);   
 
@@ -283,14 +283,16 @@ app.post('/webhook', (req, res) => {
         }
 
         callSendAPI(sender_psid, response);
-        
-      })().catch( e => { console.error(e) }));
+
+      })().catch( e => { console.error(e) }));*/
     
-        /*response = {
+        response = {
             "text": "teste5"
-          }*/
+          }
+
+          console.log(luisConfig.applicationId.text);
     
-        
+        callSendAPI(sender_psid, response);
       } 
       //res.status(200).send('EVENT_RECEIVED');
     });
