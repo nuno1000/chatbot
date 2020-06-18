@@ -243,9 +243,9 @@ app.post('/webhook', (req, res) => {
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
         // Route received a request to adapter for processing
-        adapter.processActivity(req, res, async (turnContext) => {
+        //adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
-        await bot.run(turnContext);
+        //await bot.run(turnContext);
         handleMessage(sender_psid, turnContext.activity.text);
     });       
       } 
