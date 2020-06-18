@@ -231,7 +231,6 @@ app.post('/webhook', (req, res) => {
   if (body.object === 'page') {
 
      // Return a '200 OK' response to all events
-     res.status(200).send('EVENT_RECEIVED');
 
     body.entry.forEach(function(entry) {
 
@@ -284,7 +283,7 @@ app.post('/webhook', (req, res) => {
     
         callSendAPI(sender_psid, response);
       } 
-      
+      res.status(200).send('EVENT_RECEIVED');
     });
 
     //res.status(200).send(req.body.message.text);
