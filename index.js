@@ -253,7 +253,7 @@ app.post('/webhook', (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
-        callSendAPI(sender_psid, webhook_event.message.text);        
+        handleMessage(sender_psid, webhook_event.message);        
       } 
       
     });
