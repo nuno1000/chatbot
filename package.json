@@ -18,6 +18,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "botbuilder": "~4.7.0",
+    "botbuilder-ai": "file:botbuilder-ai",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "restify": "~8.4.0"
