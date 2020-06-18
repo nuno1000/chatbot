@@ -205,10 +205,10 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 // Listen for incoming requests.
 app.post('/webhook', (req, res) => {
-    /*adapter.processActivity(req, res, async (context) => {
+    adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
         await bot.run(context);
-    });*/
+    });
 
     let body = req.body;
 
@@ -218,7 +218,7 @@ app.post('/webhook', (req, res) => {
             let sender_psid = webhook_event.sender.id;
 
             if (webhook_event.message) {
-                handleMessage(sender_psid, webhook_event.message);        
+                callSendAPI(sender_psid, "oi");        
             } 
         });
 
