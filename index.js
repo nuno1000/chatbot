@@ -250,10 +250,9 @@ app.post('/webhook', (req, res) => {
         //await bot.run(turnContext);   
 
         response = {
-            "text": `teste`
+            "text": "teste"
           }
-        }); 
-
+    
         callSendAPI(sender_psid, response);
       } 
       
