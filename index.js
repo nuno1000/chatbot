@@ -239,6 +239,9 @@ app.post('/webhook', (req, res) => {
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
 
+     // Return a '200 OK' response to all events
+     res.status(200).send('EVENT_RECEIVED');
+
     body.entry.forEach(function(entry) {
 
       // Gets the body of the webhook event
@@ -257,8 +260,7 @@ app.post('/webhook', (req, res) => {
       } 
       
     });
-    // Return a '200 OK' response to all events
-    res.status(200).send('EVENT_RECEIVED');
+   
 
   } else {
     // Return a '404 Not Found' if event is not from a page subscription
