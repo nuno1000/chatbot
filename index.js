@@ -253,7 +253,7 @@ app.post('/webhook', (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
-        callSendAPI(sender_psid, webhook_event.message.text);        
+        handleMessage(sender_psid, webhook_event.message);        
       } 
       
     });
@@ -361,7 +361,7 @@ function callSendAPI(sender_psid, response) {
     "recipient": {
       "id": sender_psid
     },
-    "message": response
+    "message": "response"
   }
 
   // Send the HTTP request to the Messenger Platform
