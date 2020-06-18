@@ -253,10 +253,14 @@ app.post('/webhook', (req, res) => {
         // route to bot activity handler.
         //await bot.run(turnContext);   
         
+        const recognizerOptions = {
+          apiVersion: 'v3'
+        };
 
-        const luisRecognizer = new FlightBookingRecognizer(luisConfig);
+        const luisRecognizer = new LuisRecognizer(luisConfig, recognizerOptions);
 
-        const luisResult = await luisRecognizer.executeLuisQuery(turnContext);
+        const luisResult = await luisRecognizer.recognize(turnContext);
+        
         switch (LuisRecognizer.topIntent(luisResult)) {
           case 'BookFlight': {
             response = {
