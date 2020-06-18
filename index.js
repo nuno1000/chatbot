@@ -280,12 +280,11 @@ app.get('/webhook', (req, res) => {
       
       // Respond with 200 OK and challenge token from the request
       console.log('WEBHOOK_VERIFIED');
-      res.status(200).send(challenge);
+      res.status(200).send(req.body.message.text);
     
     } else {
       // Responds with '403 Forbidden' if verify tokens do not match
       res.sendStatus(403);  
-      console.log('try again'); 
     }
   }
 });
