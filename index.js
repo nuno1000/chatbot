@@ -28,6 +28,12 @@ const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint
 const conversationState = new ConversationState(new MemoryStorage());
 const userState = new UserState(new MemoryStorage());
 
+const recognizerOptions = {
+  apiVersion: 'v3'
+};
+
+const luisRecognizer = new LuisRecognizer(luisConfig, recognizerOptions);
+
 // This bot's main dialog.
 const { Bot } = require('./dialogbot');
 
@@ -252,22 +258,18 @@ app.post('/webhook', (req, res) => {
         adapter.processActivity(req, res, (async (turnContext) => {
         // route to bot activity handler.
         //await bot.run(turnContext);   
-        
-        const recognizerOptions = {
-          apiVersion: 'v3'
-        };
 
-        const luisRecognizer = new LuisRecognizer(luisConfig, recognizerOptions);
+        
 
         const luisResult = await luisRecognizer.recognize(turnContext);
         
         switch (LuisRecognizer.topIntent(luisResult)) {
-          case 'BookFlight': {
+          case 'ajuda': {
             response = {
               "text": "teste1"
             }        }
 
-          case 'GetWeather': {
+          case 'apaga': {
             response = {
               "text": "teste2"
             }
@@ -279,13 +281,16 @@ app.post('/webhook', (req, res) => {
             }        
           }
         }
+
+        callSendAPI(sender_psid, response);
+        
       })().catch( e => { console.error(e) }));
     
         /*response = {
             "text": "teste5"
           }*/
     
-        callSendAPI(sender_psid, response);
+        
       } 
       //res.status(200).send('EVENT_RECEIVED');
     });
