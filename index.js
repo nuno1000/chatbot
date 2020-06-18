@@ -297,7 +297,7 @@ app.post('/webhook', (req, res) => {
       
     });
 
-    res.status(200).send(req.body.message.text);
+    res.status(200).send("ola");
 
   } else {
     // Return a '404 Not Found' if event is not from a page subscription
