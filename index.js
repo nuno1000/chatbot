@@ -255,13 +255,13 @@ app.post('/webhook', (req, res) => {
         let response;
 
         // Route received a request to adapter for processing
-        adapter.processActivity(req, res, (async (turnContext) => {
+        adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
         //await bot.run(turnContext);   
 
         
 
-        const luisResult = await luisRecognizer.recognize(webhook_event.message.text);
+        const luisResult = await luisRecognizer.recognize("ajuda");
         
         switch (LuisRecognizer.topIntent(luisResult)) {
           case 'ajuda': {
@@ -285,7 +285,7 @@ app.post('/webhook', (req, res) => {
 
         //callSendAPI(sender_psid, response);
 
-      })().catch( e => { console.error(e) }));
+      });
     
         /*response = {
             "text": "teste5"
