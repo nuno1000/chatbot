@@ -316,7 +316,7 @@ app.post('/webhook', (req, res) => {
 
     //callSendAPI(sender_psid, response);
 
-    }
+    //}
     
         response = {
             "text": "teste5"
@@ -325,6 +325,7 @@ app.post('/webhook', (req, res) => {
           //console.log(luisConfig.applicationId);
     
         callSendAPI(sender_psid, response);
+      }
       });
 
     res.status(200);
