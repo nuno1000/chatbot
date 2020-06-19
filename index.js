@@ -10,7 +10,7 @@ const body_parser = require('body-parser');
 const app = express();
 
 // parse application/x-www-form-urlencoded
-app.use(body_parser.urlencoded({ extended: false })); // creates express http server
+app.use(body_parser.urlencoded({ extended: true })); // creates express http server
 
 // parse application/json
 app.use(body_parser.json());
@@ -238,7 +238,7 @@ app.post('/webhook', (req, res) => {
   let body = req.body;
 
    // Route received a request to adapter for processing
-   adapter.processActivity(req, res, async (turnContext) => {
+   //adapter.processActivity(req, res, async (turnContext) => {
     // route to bot activity handler.
     //await bot.run(turnContext);   
 
@@ -268,7 +268,7 @@ app.post('/webhook', (req, res) => {
 
     //callSendAPI(sender_psid, response);
 
-  });
+  //});
 
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
