@@ -4,15 +4,16 @@
 'use strict';
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 // Imports dependencies and set up http server
-const 
-  request = require('request'),
-  express = require('express'),
-  body_parser = require('body-parser'),
-  app = express().use(body_parser.urlencoded({ extended: false })); // creates express http server
+const request = require('request');
+const express = require('express');
+const body_parser = require('body-parser');
+const app = express();
 
+// parse application/x-www-form-urlencoded
+app.use(body_parser.urlencoded({ extended: false })); // creates express http server
 
 // parse application/json
-app.use(body_parser.json())
+app.use(body_parser.json());
 
 const dotenv = require('dotenv');
 const path = require('path');
