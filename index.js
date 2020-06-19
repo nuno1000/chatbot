@@ -17,7 +17,7 @@ const path = require('path');
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState, TurnContext } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
 const { FlightBookingRecognizer } = require('./flightBookingRecognizer');
 const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
@@ -255,13 +255,13 @@ app.post('/webhook', (req, res) => {
         let response;
 
         // Route received a request to adapter for processing
-        //adapter.processActivity(req, res, async (turnContext) => {
+        adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
         //await bot.run(turnContext);   
 
         
 
-        const luisResult = luisRecognizer.recognize("ajuda");
+        const luisResult = luisRecognizer.recognize(turnContext);
         
         switch (LuisRecognizer.topIntent(luisResult)) {
           case 'ajuda': {
@@ -285,7 +285,8 @@ app.post('/webhook', (req, res) => {
 
         //callSendAPI(sender_psid, response);
 
-      };
+      });
+    }
     
         /*response = {
             "text": "teste5"
