@@ -21,7 +21,7 @@ const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = req
 const { LuisRecognizer } = require('botbuilder-ai');
 const { FlightBookingRecognizer } = require('./flightBookingRecognizer');
 const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
-const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: `https://${ LuisAPIHostName }` };
+const luisConfig = { applicationId: "c3b0b2ac-a5bb-4c73-a562-ee200a7a6ae9", endpointKey: "b1cc29a6e4b745428d50926ca9fc9c21", endpoint: `https://westus.api.cognitive.microsoft.com/` };
 
 
 // Create conversation and user state with in-memory storage provider.
