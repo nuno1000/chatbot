@@ -261,7 +261,7 @@ app.post('/webhook', (req, res) => {
         // route to bot activity handler.
         //await bot.run(turnContext);   
 
-        console.log(req.body.type);
+        console.log(req.body);
 
         //const luisResult = luisRecognizer.recognize(turnContext);
         
