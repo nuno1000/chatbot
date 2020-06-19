@@ -254,7 +254,7 @@ app.post('/webhook', (req, res) => {
       if (webhook_event.message) {
         let response;
 
-        console.log(req);
+        
 
         // Route received a request to adapter for processing
         adapter.processActivity(req, res, async (turnContext) => {
