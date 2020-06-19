@@ -12,7 +12,7 @@ const
 
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(body_parser.json())
 
 const dotenv = require('dotenv');
 const path = require('path');
