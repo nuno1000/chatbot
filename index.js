@@ -290,6 +290,31 @@ app.post('/webhook', (req, res) => {
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
         let response;
+        
+        const luisResult = luisRecognizer.recognize(req.message.text);
+    
+    /*switch (LuisRecognizer.topIntent(luisResult)) {
+      case 'ajuda': {
+        response = {
+          "text": "teste1"
+        }        }
+
+      case 'apaga': {
+        response = {
+          "text": "teste2"
+        }
+      }
+
+      default: {
+        response = {
+          "text": "teste3"
+        }        
+      }
+    }*/
+    //console.log(webhook_event.message.text);
+
+    //callSendAPI(sender_psid, response);
+
     }
     
         /*response = {
