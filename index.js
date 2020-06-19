@@ -261,7 +261,7 @@ app.post('/webhook', (req, res) => {
 
         
 
-        const luisResult = await luisRecognizer.recognize(turnContext);
+        const luisResult = await luisRecognizer.recognize(webhook_event.message.text);
         
         switch (LuisRecognizer.topIntent(luisResult)) {
           case 'ajuda': {
@@ -281,7 +281,7 @@ app.post('/webhook', (req, res) => {
             }        
           }
         }
-        console.log("everything looks fine");
+        console.log(webhook_event.message.text);
 
         //callSendAPI(sender_psid, response);
 
