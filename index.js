@@ -296,7 +296,7 @@ app.post('/webhook', (req, res) => {
         callSendAPI(sender_psid, response);
       });
 
-    res.status(200).send("ola");
+    res.status(200);
 
   } else {
     // Return a '404 Not Found' if event is not from a page subscription
@@ -324,11 +324,11 @@ app.get('/webhook', (req, res) => {
       
       // Respond with 200 OK and challenge token from the request
       console.log('WEBHOOK_VERIFIED');
-      //res.status(200).send(req.body.message.text);
+      res.status(200).send(req.body.message.text);
     
     } else {
       // Responds with '403 Forbidden' if verify tokens do not match
-      //res.sendStatus(403);  
+      res.sendStatus(403);  
     }
   }
 });
