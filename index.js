@@ -291,7 +291,8 @@ app.post('/webhook', (req, res) => {
       if (webhook_event.message) {
         let response;
         
-        const luisResult = luisRecognizer.recognize(body.message.text);
+        console.log(body);
+        //const luisResult = luisRecognizer.recognize(body.message.text);
     
     /*switch (LuisRecognizer.topIntent(luisResult)) {
       case 'ajuda': {
