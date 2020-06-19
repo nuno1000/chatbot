@@ -261,9 +261,9 @@ app.post('/webhook', (req, res) => {
 
         
 
-        const luisResult = luisRecognizer.recognize(turnContext);
+        //const luisResult = luisRecognizer.recognize(turnContext);
         
-        switch (LuisRecognizer.topIntent(luisResult)) {
+        /*switch (LuisRecognizer.topIntent(luisResult)) {
           case 'ajuda': {
             response = {
               "text": "teste1"
@@ -280,7 +280,7 @@ app.post('/webhook', (req, res) => {
               "text": "teste3"
             }        
           }
-        }
+        }*/
         //console.log(webhook_event.message.text);
 
         //callSendAPI(sender_psid, response);
