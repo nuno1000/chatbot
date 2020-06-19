@@ -257,7 +257,7 @@ app.post('/webhook', (req, res) => {
         
 
         // Route received a request to adapter for processing
-        adapter.processActivity(req, res, async (turnContext) => {
+        //adapter.processActivity(req, res, async (turnContext) => {
         // route to bot activity handler.
         //await bot.run(turnContext);   
 
@@ -287,7 +287,7 @@ app.post('/webhook', (req, res) => {
 
         //callSendAPI(sender_psid, response);
 
-      });
+      //});
     }
     
         /*response = {
