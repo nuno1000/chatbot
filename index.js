@@ -294,7 +294,7 @@ app.post('/webhook', (req, res) => {
 
           //console.log(luisConfig.applicationId);
     
-        callSendAPI(sender_psid, response);
+        //callSendAPI(sender_psid, response);
       });
 
     res.status(200);
