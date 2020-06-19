@@ -49,7 +49,7 @@ const adapter = new BotFrameworkAdapter({
 });
 
 // Catch-all for errors.
-/*const onTurnErrorHandler = async (context, error) => {
+const onTurnErrorHandler = async (context, error) => {
     // This check writes out errors to console log .vs. app insights.
     // NOTE: In production environment, you should consider logging this to Azure
     //       application insights.
@@ -69,7 +69,7 @@ const adapter = new BotFrameworkAdapter({
 };
 
 // Set the onTurnError for the singleton BotFrameworkAdapter.
-adapter.onTurnError = onTurnErrorHandler;*/
+adapter.onTurnError = onTurnErrorHandler;
 
 // Create the bot's main handler.
 const bot = new Bot();
@@ -253,6 +253,8 @@ app.post('/webhook', (req, res) => {
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
         let response;
+
+        console.log(req);
 
         // Route received a request to adapter for processing
         adapter.processActivity(req, res, async (turnContext) => {
