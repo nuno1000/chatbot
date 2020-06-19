@@ -8,9 +8,12 @@ const
   request = require('request'),
   express = require('express'),
   body_parser = require('body-parser'),
-  app = express().use(body_parser.json()); // creates express http server
+  app = express().use(body_parser.urlencoded({ extended: false })); // creates express http server
 
-  
+
+// parse application/json
+app.use(bodyParser.json())
+
 const dotenv = require('dotenv');
 const path = require('path');
 //const restify = require('restify');
