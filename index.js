@@ -32,7 +32,7 @@ const recognizerOptions = {
   apiVersion: 'v3'
 };
 
-//const luisRecognizer = new LuisRecognizer(luisConfig, recognizerOptions);
+const luisRecognizer = new LuisRecognizer(luisConfig, recognizerOptions);
 
 // This bot's main dialog.
 const { Bot } = require('./dialogbot');
