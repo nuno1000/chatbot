@@ -233,6 +233,39 @@ app.post('/webhook', (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
 
+   // Route received a request to adapter for processing
+   adapter.processActivity(req, res, async (turnContext) => {
+    // route to bot activity handler.
+    //await bot.run(turnContext);   
+
+    console.log(req.body);
+
+    //const luisResult = luisRecognizer.recognize(turnContext);
+    
+    /*switch (LuisRecognizer.topIntent(luisResult)) {
+      case 'ajuda': {
+        response = {
+          "text": "teste1"
+        }        }
+
+      case 'apaga': {
+        response = {
+          "text": "teste2"
+        }
+      }
+
+      default: {
+        response = {
+          "text": "teste3"
+        }        
+      }
+    }*/
+    //console.log(webhook_event.message.text);
+
+    //callSendAPI(sender_psid, response);
+
+  });
+
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
 
@@ -253,41 +286,6 @@ app.post('/webhook', (req, res) => {
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
         let response;
-
-        
-
-        // Route received a request to adapter for processing
-        adapter.processActivity(req, res, async (turnContext) => {
-        // route to bot activity handler.
-        //await bot.run(turnContext);   
-
-        console.log(req.body);
-
-        //const luisResult = luisRecognizer.recognize(turnContext);
-        
-        /*switch (LuisRecognizer.topIntent(luisResult)) {
-          case 'ajuda': {
-            response = {
-              "text": "teste1"
-            }        }
-
-          case 'apaga': {
-            response = {
-              "text": "teste2"
-            }
-          }
-
-          default: {
-            response = {
-              "text": "teste3"
-            }        
-          }
-        }*/
-        //console.log(webhook_event.message.text);
-
-        //callSendAPI(sender_psid, response);
-
-      });
     }
     
         /*response = {
